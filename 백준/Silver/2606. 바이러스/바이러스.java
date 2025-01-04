@@ -37,17 +37,17 @@ public class Main {
 		queue.add(1);
 		
 		Set<Integer> virus = new HashSet<Integer>();
-		virus.add(1);
+		virus.add(1);	// 바이러스 걸린 컴퓨터(1)은 무조건 넣어준 뒤 출력 시 1을 빼준다
 		
 		while(!queue.isEmpty()) {
 			int i = queue.poll();
-			visited[1] = true;
+			visited[1] = true;		// 1은 방문한 것으로 처리, 다시 큐에 들어가지 않는다
 			
 			for(int key : hm.get(i)) {
 //				System.out.println("key : " + key);
 //				System.out.println(visited[key]);
 				if (!visited[key]) queue.add(key);
-				visited[key] = true;
+				visited[key] = true;	// 큐에 담은 애들은 다시 큐에 담지않기 위해 방문한 것으로 표시
 				virus.add(key);
 			}
 //			System.out.println("set : " + virus);
