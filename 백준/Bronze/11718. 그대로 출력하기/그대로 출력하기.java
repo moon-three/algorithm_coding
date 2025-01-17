@@ -7,9 +7,11 @@ public class Main {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String s = "";
-		while((s = br.readLine()) != null) {
-			System.out.println(s);
+		while(true) {
+			s = br.readLine();
+			if(s == null) 	break; 
+			else 			System.out.println(s);
 		}
 		br.close();
-	}
+	}	
 }
