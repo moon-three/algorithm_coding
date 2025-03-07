@@ -18,6 +18,7 @@ public class Main {
 			arr[ch - 'A']++;
 		}
 		
+        // 반례 abcc, maxCnt 같아도 뒤에 더 큰 maxCnt 가 있을 수도 있으니 다 돌아야 함
 		for(int i = 0; i < arr.length; i++) {
 			if(maxCnt > 0 && maxCnt == arr[i]) {
 				isOne = false;
