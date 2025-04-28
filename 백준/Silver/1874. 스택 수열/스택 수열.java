@@ -23,12 +23,12 @@ public class Main {
 		for(int i = 0; i < N; i++) {
 			int cur = arr[i];
 			
-			while (num <= cur) {
+			while (num <= cur) {    // stack 에 비교값과 같을때까지 넣기
 				stack.add(num++);
 				sb.append("+").append("\n");
 			}
 			
-			if(cur == stack.pop()) {
+			if(cur == stack.pop()) {    // 같을때까지 넣었으니 꺼냈을때는 비교값과 같다
 				sb.append("-").append("\n");				
 			} else {
 				flag = false;
