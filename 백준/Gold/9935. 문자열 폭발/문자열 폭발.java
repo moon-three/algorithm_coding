@@ -36,7 +36,7 @@ public class Main {
 	public static void checkBomb(String bomb) {
 		
 		for(int i = 0; i < bomb.length(); i++) {
-			if(!stack.get(stack.size() - bomb.length() + i).equals(bomb.charAt(i))) {
+			if(stack.get(stack.size() - bomb.length() + i) != (bomb.charAt(i))) {
 				return;
 			}
 		}
