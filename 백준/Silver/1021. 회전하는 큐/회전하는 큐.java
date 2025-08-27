@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int count = 0;
+    static boolean rotateLeft;
 
     static int N, M;
     static Deque<Integer> deque = new ArrayDeque<>();
@@ -26,37 +27,27 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         for(int m = 0; m < M; m++) {
             int value = Integer.parseInt(st.nextToken());
-            // deque 에서 value 위치가 반 보다 앞이면 뒤로, 반보다 뒤면 앞으로 해야할거같은데
+
             int idx = 0;
-            for(int n : deque) {
-                if(n == value) {
+            for (int n : deque) {
+                if (n == value) {
                     break;
                 }
                 idx++;
             }
-
             int half = deque.size() / 2;
 
-            if(idx <= half) {
-                while(true) {
-                    int cur = deque.pollFirst();
-                    if(cur == value) {
-                        break;
-                    }
-                    deque.addLast(cur);
-                    count++;
+            rotateLeft = idx <= half;   // 왼쪽으로 회전할지 오른쪽으로 회전할지 결정
+
+            while (!deque.isEmpty() && deque.peekFirst() != value) {
+                if (rotateLeft) {
+                    deque.addLast(deque.pollFirst());
+                } else {
+                    deque.addFirst(deque.pollLast());
                 }
-            } else {
-                while(true) {
-                    int cur = deque.pollLast();
-                    if(cur == value) {
-                        count++;
-                        break;
-                    }
-                    deque.addFirst(cur);
-                    count++;
-                }
+                count++;
             }
+            deque.pollFirst();
         }
         System.out.println(count);
         br.close();
