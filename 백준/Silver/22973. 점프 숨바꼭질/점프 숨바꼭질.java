@@ -17,19 +17,13 @@ public class Main {
             return;
         }
 
-        // 음수면 양수로
-        long target = Math.abs(K) + 1;
+        K = Math.abs(K);
         int cnt = 0;
-        while (target % 2 == 0) {
-            target /= 2;
+        while (K > 0) {
+            K /= 2;
             cnt++;
         }
-
-        if(target == 1) {
-            System.out.println(cnt);
-        } else {
-            System.out.println("-1");
-        }
+        System.out.println(cnt);
         sc.close();
     }
 }
