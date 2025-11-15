@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -26,33 +24,21 @@ public class Main {
             }
         }
 
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{1, 1});
         dp[1][1] = 0;
 
-        while(!queue.isEmpty()) {
-            int[] cur = queue.poll();
-            int n = cur[0];
-            int m = cur[1];
+        for(int n = 1; n <= N; n++) {
+            for(int m = 1; m <= M; m++) {
+                int jump = table[n][m];
 
-            int jump = table[n][m];
-            for(int i = 1; i <= jump; i++) {
-                int next_n = n + i;
-                if(next_n > N) break;
+                for(int next = 1; next <= jump; next++) {
+                    if(n + next > N) break;
 
-                if(dp[next_n][m] > dp[n][m] + 1) {
-                    dp[next_n][m] = dp[n][m] + 1;
-                    queue.add(new int[]{next_n, m});
+                    dp[n + next][m] = Math.min(dp[n + next][m], dp[n][m] + 1);
                 }
-            }
 
-            for(int i = 1; i <= jump; i++) {
-                int next_m = m + i;
-                if(next_m > M) break;
-
-                if(dp[n][next_m] > dp[n][m] + 1) {
-                    dp[n][next_m] = dp[n][m] + 1;
-                    queue.add(new int[]{n, next_m});
+                for(int next = 1; next <= jump; next++) {
+                    if(m + next > M) break;
+                    dp[n][m + next] = Math.min(dp[n][m + next], dp[n][m] + 1);
                 }
             }
         }
