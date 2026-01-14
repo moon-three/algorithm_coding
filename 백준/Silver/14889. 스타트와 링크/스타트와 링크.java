@@ -24,13 +24,14 @@ public class Main {
             }
         }
 
+        isTeam[1] = true;   // 스타트:123 링크:456 / 스타트:456 링크:123 방지 (중복방지)
         dfs(0, 1);
         System.out.println(minDiffer);
         br.close();
     }
 
     static void dfs(int cnt, int start) {
-        if (cnt == N / 2) {
+        if (cnt == N / 2 - 1) {
             // 그 팀의 점수를 구하고 비교
             int startTeam = 0;
             int linkTeam = 0;
