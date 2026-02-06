@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class Student implements Comparable<Student>{
+class Student implements Comparable<Student> {
     int rank;
     int idx;
     
@@ -19,7 +19,6 @@ class Student implements Comparable<Student>{
 
 class Solution {
     public int solution(int[] rank, boolean[] attendance) {
-        int answer = 0;
         List<Student> list = new ArrayList<>();
         
         for(int i = 0; i < attendance.length; i++) {
@@ -27,12 +26,8 @@ class Solution {
                 list.add(new Student(rank[i], i));
             }
         }
-        
         Collections.sort(list);
-        answer += list.get(0).idx * 10000;
-        answer += list.get(1).idx * 100;
-        answer += list.get(2).idx;
         
-        return answer;
+        return list.get(0).idx * 10000 + list.get(1).idx * 100 + list.get(2).idx;
     }
 }
