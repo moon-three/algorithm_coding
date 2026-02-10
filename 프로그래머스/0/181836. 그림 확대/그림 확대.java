@@ -1,6 +1,6 @@
 class Solution {
     public String[] solution(String[] picture, int k) {
-        String[] answer = {};
+        String[] answer = new String[picture.length * k];;
         
         for(int i = 0; i < picture.length; i++) {
             StringBuilder sb = new StringBuilder();
@@ -10,13 +10,8 @@ class Solution {
                     sb.append(ch);
                 }
             }
-            picture[i] = sb.toString();
-        }
-        
-        answer = new String[picture.length * k];
-        for(int i = 0; i < picture.length; i++) {
             for(int j = k*i; j < k*i+k; j++) {
-                answer[j] = picture[i];
+                answer[j] = sb.toString();
             }
         }
         
