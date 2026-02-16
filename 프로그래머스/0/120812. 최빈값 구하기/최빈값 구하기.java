@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 class Solution {
     public int solution(int[] array) {
         int[] arr = new int[1000];
@@ -21,8 +19,6 @@ class Solution {
             }
         }
         
-        if(cnt > 1) return -1;
-        
-        return answer;
+        return cnt > 1 ? -1 : answer;
     }
 }
