@@ -8,10 +8,6 @@ class Solution {
             map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
         }
         
-        if(nums.length / 2 > map.size()) {
-            return map.size();
-        }
-        
-        return nums.length / 2;
+        return Math.min(nums.length / 2, map.size());
     }
 }
