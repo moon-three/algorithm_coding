@@ -1,26 +1,18 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(int[] arr) {
-        int[] answer = {-1};
-        
-        if(arr.length == 1) {
-            return answer;
-        }
+        List<Integer> list = new ArrayList<>();
+        if(arr.length == 1) return new int[]{-1};
         
         int min = Integer.MAX_VALUE;
-        for(int i = 0; i < arr.length; i++) {
-            if(arr[i] < min) {
-                min = arr[i];
-            }
+        for(int n : arr) {
+            min = Math.min(min, n);
+            list.add(n);
         }
         
-        answer = new int[arr.length - 1];
-        int idx = 0;
-        for(int i = 0; i < arr.length; i++) {
-            if(arr[i] != min) {
-                answer[idx++] = arr[i];
-            }        
-        }
+        list.remove(Integer.valueOf(min));
         
-        return answer;
+        return list.stream().mapToInt(Integer::intValue).toArray();
     }
 }
