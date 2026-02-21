@@ -7,8 +7,11 @@ class Solution {
         if(s.length() % 2 != 0) return false;
         
         for(char ch : s.toCharArray()) {
-            if(stack.isEmpty() || ch == '(') stack.push(ch);
-            else if(ch == ')' && stack.peek() == '(') stack.pop();
+            if(ch == '(') stack.push(ch);
+            else {
+                if(stack.isEmpty()) return false;
+                stack.pop();
+            }
         } 
         
         return stack.isEmpty();
