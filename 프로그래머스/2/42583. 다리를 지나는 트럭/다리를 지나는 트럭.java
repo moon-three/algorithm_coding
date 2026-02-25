@@ -9,24 +9,25 @@ class Solution {
         
         int bridgeWeight = 0; // 현재 다리 위 무게
         int time = 0; // 걸리는 시간
-        int i = 0; // 남은 트럭 체크를 위한 idx
+        int idx = 0; // 남은 트럭 체크를 위한 idx
         
-        // 아직 트럭이 남아있으면! (다리위에 있든 대기중이든..)
-        while(bridgeWeight > 0 || truck_weights.length > i) {
+        while(idx < truck_weights.length) {
             time++;
         
             int cur = bridge.poll();
             bridgeWeight -= cur;
             
-            // 대기 중인 트럭이 있고 가능한 무게면..!
-            if(truck_weights.length > i && weight >= bridgeWeight + truck_weights[i]) {
-                int next = truck_weights[i++];
+            int next = truck_weights[idx];
+            
+            if(weight >= bridgeWeight + next) {
                 bridge.offer(next);
                 bridgeWeight += next;
+                idx++;
             } else {
                 bridge.offer(0);
             }
         }
-        return time;
+        // 마지막 트럭이 지나가야 하므로 다리 길이만큼 더하기
+        return time + bridge_length;
     }
 }
