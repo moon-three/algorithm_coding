@@ -9,12 +9,9 @@ public class Main {
     static final int UND = 0;
     static final int _n = 0;
     static final int _m = 1;
-    static List<List<Integer>> dirs = Arrays.asList(
-            Arrays.asList(-1, 0),
-            Arrays.asList(1, 0),
-            Arrays.asList(0, -1),
-            Arrays.asList(0, 1)
-    );
+    static final int[][] dirs = {
+        {-1,0}, {1,0}, {0,-1}, {0, 1}
+    };
 
     static int T, N, M, K;
     static List<List<Integer>> graph;
@@ -66,9 +63,9 @@ public class Main {
     static void dfs(int n, int m) {
         visited.get(n).set(m, 1);
 
-        for(List<Integer> dir : dirs) {
-            int next_n = n + dir.get(_n);
-            int next_m = m + dir.get(_m);
+        for(int[] dir : dirs) {
+            int next_n = n + dir[_n];
+            int next_m = m + dir[_m];
 
             if(0 <= next_n && next_n < N && 0 <= next_m && next_m < M
                     && graph.get(next_n).get(next_m) == CABBAGE
