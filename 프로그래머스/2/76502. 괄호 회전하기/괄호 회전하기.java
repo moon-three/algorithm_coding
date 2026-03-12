@@ -17,16 +17,16 @@ class Solution {
                 int idx = (j % length);
                 char cur = s.charAt(idx);
       
-                if(stack.isEmpty()) {
-                    if(map.keySet().contains(cur)) {
+                // 만약 (면 넣자
+                // ) 이거면 비었는지 안 비었음 안에가 (인지 확인하자
+                if(map.keySet().contains(cur)) {    // 닫는 괄호에
+                    if(stack.isEmpty() || stack.pop() != map.get(cur)) { // 비어있거나 꺼낸게 짝이 아니면
                         flag = false;
                         break;
                     }
-                } else if(stack.peek() == map.get(cur)) {
-                    stack.pop();
-                    continue;
+                } else {
+                    stack.push(cur);
                 }
-                stack.push(cur);
             }
             if(flag && stack.isEmpty()) answer++;
         }   
