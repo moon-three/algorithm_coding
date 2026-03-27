@@ -5,14 +5,15 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
 
-        for(int i = 666; i <= 10000666; i++) {
-            if(String.valueOf(i).contains("666")) {
-                N--;
-            }
+        int val = 666;
+        while(N > 0) {
+            if(String.valueOf(val).contains("666")) N--;
+            
             if(N == 0) {
-                System.out.println(i);
+                System.out.println(val);
                 break;
             }
+            val++;
         }
         sc.close();
     }
