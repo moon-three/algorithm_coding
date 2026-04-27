@@ -1,24 +1,23 @@
 class Solution {
-    int[] _numbers;
-    int _target;
-    int N;
-    int cnt = 0;
+    static int[] _numbers;
+    static int _target;
+    static int cnt = 0;
     public int solution(int[] numbers, int target) {
         _numbers = numbers;
         _target = target;
-        N = numbers.length;
 
         dfs(0, 0);
         
         return cnt;
     }
-
-    public void dfs(int depth, int sum) {
-        if(depth == N) {
+    
+    void dfs(int idx, int sum) {
+        if(idx == _numbers.length) {
             if(sum == _target) cnt++;
             return;
         }
-        dfs(depth+1, sum + _numbers[depth]);
-        dfs(depth+1, sum + _numbers[depth] * -1);
+        
+        dfs(idx+1, sum + _numbers[idx]);
+        dfs(idx+1, sum - _numbers[idx]);
     }
 }
