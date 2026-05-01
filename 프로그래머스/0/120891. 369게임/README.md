@@ -1,10 +1,10 @@
 # [level 0] 369게임 - 120891 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120891) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120891?language=kotlin) 
 
 ### 성능 요약
 
-메모리: 87.4 MB, 시간: 0.12 ms
+메모리: 63.7 MB, 시간: 0.01 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 08월 02일 04:34:57
+2026년 05월 02일 00:06:56
 
 ### 문제 설명
 
