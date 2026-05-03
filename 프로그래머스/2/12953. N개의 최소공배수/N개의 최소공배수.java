@@ -1,29 +1,16 @@
-import java.util.*;
-
 class Solution {
     public int solution(int[] arr) {
-        Queue<Integer> queue = new LinkedList<>();
-        for(int n : arr) {
-            queue.add(n);
+        int answer = arr[0];
+        
+        for(int i = 1; i < arr.length; i++) {
+            answer = answer * arr[i] / gcd(answer, arr[i]);
         }
         
-        while(queue.size() >= 2) {
-            int n1 = queue.poll();
-            int n2 = queue.poll();
-            
-            int lcm = n1 * (n2 / gcd(n1, n2));
-            
-            queue.add(lcm);
-        }
-        
-        return queue.poll();
+        return answer;
     }
     
     public int gcd(int a, int b) {
-        if(b == 0) {
-            return a;
-        }
+        if(b == 0) return a;
         return gcd(b, a % b);
     }
-    
 }
