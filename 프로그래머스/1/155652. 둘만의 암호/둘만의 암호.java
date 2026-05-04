@@ -23,6 +23,7 @@ class Solution {
             }
             answer += (char)('a' + target);
         }
+        
         return answer;
     }
 }
