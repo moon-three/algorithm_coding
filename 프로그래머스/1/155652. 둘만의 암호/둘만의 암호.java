@@ -2,28 +2,21 @@ import java.util.*;
 
 class Solution {
     public String solution(String s, String skip, int index) {
-        String answer = "";
-        
-        Set<Integer> skips = new HashSet<>();
-        
-        for(int i = 0; i < skip.length(); i++) {
-            int value = skip.charAt(i) - 'a';
-            skips.add(value);
-        }
+        StringBuilder sb = new StringBuilder();
         
         for(int i = 0; i < s.length(); i++) {
-            int target = s.charAt(i) - 'a';
+            char target = s.charAt(i);
            
             for(int j = 1; j <= index; j++) {
                 target++;
-                if(target >= 26) target %= 26;
-                if(skips.contains(target)) {
+                if(target > 'z') target -= 26;
+                if(skip.contains(String.valueOf(target))) {
                     j--;
                 }
             }
-            answer += (char)('a' + target);
+            sb.append(target);
         }
         
-        return answer;
+        return sb.toString();
     }
 }
