@@ -17,8 +17,6 @@ class Solution {
             map.put(target, map.getOrDefault(target, 0) + Math.abs(4-choice));
         }
         
-        System.out.println(map);
-        
         String result  = "";
         result += map.getOrDefault('R', 0) >= map.getOrDefault('T', 0) ? 'R' : 'T';
         result += map.getOrDefault('C', 0) >= map.getOrDefault('F', 0) ? 'C' : 'F';
