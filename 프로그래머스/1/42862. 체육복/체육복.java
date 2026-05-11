@@ -1,7 +1,7 @@
 import java.util.*;
 
 // 1. 앞에 애가 2개 가지고 있는 경우
-// 2. 뒤에 애는 1개 있는거 뺏어도 뒤에 다른애가 여분 있으면 받으면 되니까..
+// 2. 뒤에 애는 1개 있는거 뺏어도 뒤에 다른애가 여분 있으면 받으면 되니까.. > 아니네..
 
 class Solution {
     public int solution(int n, int[] lost, int[] reserve) {
