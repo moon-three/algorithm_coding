@@ -8,7 +8,6 @@ class Solution {
                 if(result) return i;
             }
         }
-        
         return -1;
     }
     
