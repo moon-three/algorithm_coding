@@ -1,14 +1,10 @@
 class Solution {
     public long solution(int a, int b) {
-        long answer = 0;
+        if(a == b) return a;
         
-        int start = a <= b ? a : b;
-        int end = a > b ? a : b;
-        
-        for(int i = start; i <= end; i++) {
-            answer += i;
-        }
-        
-        return answer;
+        int n = Math.min(a, b);
+        int m = Math.max(a, b);
+
+        return (long)(n + m) * (m - n + 1) / 2;
     }
 }
