@@ -2,19 +2,13 @@ import java.util.*;
 
 class Solution {
     public String solution(String s) {
+        char[] chs = s.toCharArray();
+        Arrays.sort(chs);
+        
         String answer = "";
         
-        int[] arr = new int[s.length()];
-        
-        for(int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            arr[i] = (int)ch;
-        }
-        
-        Arrays.sort(arr);
-        
-        for(int i = arr.length -1; i >= 0; i--) {
-            answer += (char) arr[i];
+        for(int i = chs.length - 1; i >= 0; i--) {
+            answer += chs[i];
         }
         
         return answer;
