@@ -1,5 +1,5 @@
 -- 코드를 입력하세요
-SELECT NAME
+SELECT 
     NAME,
     COUNT(NAME)
     FROM ANIMAL_INS
