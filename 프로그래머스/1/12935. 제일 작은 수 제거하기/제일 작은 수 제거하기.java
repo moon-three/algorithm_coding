@@ -2,17 +2,12 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr) {
-        List<Integer> list = new ArrayList<>();
+        int[] answer = {};
+        
         if(arr.length == 1) return new int[]{-1};
         
-        int min = Integer.MAX_VALUE;
-        for(int n : arr) {
-            min = Math.min(min, n);
-            list.add(n);
-        }
+        int min = Arrays.stream(arr).min().getAsInt();
         
-        list.remove(Integer.valueOf(min));
-        
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        return Arrays.stream(arr).filter(x -> x != min).toArray();
     }
 }
