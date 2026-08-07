@@ -1,18 +1,16 @@
-import java.util.*;
-
 class Solution {
     public int solution(int k, int m, int[] score) {
         int answer = 0;
         
-        Arrays.sort(score);
+        int[] scoreCnt = new int[k + 1];
         
-       int cnt = 0;
-        for(int i = score.length - 1; i >= 0; i--) {
-            cnt++;
-            if(cnt == m) {
-                answer += score[i] * m;
-                cnt = 0;
-            }
+        for(int n : score) {
+            scoreCnt[n]++;
+        }
+
+        for(int i = k; i > 0; i--) {
+            answer += i * (scoreCnt[i] / m) * m;
+            scoreCnt[i - 1] += scoreCnt[i] % m;
         }
         
         return answer;
