@@ -2,16 +2,11 @@ class Solution {
     public boolean solution(String s) {
         boolean answer = true;
         
-        int length = s.length();
+        if(s.length() != 4 && s.length() != 6) return false;
         
-        if(length != 4 && length != 6) return false;
-        
-        for(int i = 0; i < length; i++) {
-            char ch = s.charAt(i);
-            if(!('0' <= ch && ch <= '9')) {
-                answer = false;
-                break;
-            }
+        for(int i = 0; i < s.length(); i++) {
+            if('0' <= s.charAt(i) && s.charAt(i) <= '9') continue;
+            return false;
         }
         
         return answer;
