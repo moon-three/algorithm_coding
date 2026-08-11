@@ -1,27 +1,33 @@
 import java.util.*;
 
 class Solution {
-    public int[] solution(String[] keymap, String[] targets) {
-        int[] answer = new int[targets.length];
-        
+    public int[] solution(String[] keymap, String[] targets) {  
         Map<Character, Integer> map = new HashMap<>();
         
         for(int i = 0; i < keymap.length; i++) {
-            for(int j = 0; j < keymap[i].length(); j++) {
-                char ch = keymap[i].charAt(j);
-                int value = map.getOrDefault(ch, j+1);
-                value = Math.min(value, j+1);
-                map.put(ch, value);
+            String key = keymap[i];
+            for(int j = 0; j < key.length(); j++) {
+                char ch = key.charAt(j);
+                if(map.containsKey(ch)) {
+                    int min = Math.min(map.get(ch), j + 1);
+                    map.put(ch, min);
+                } else {
+                    map.put(ch, j + 1);
+                }
             }
         }
         
+       int[] answer = new int[targets.length];
+        
         for(int i = 0; i < targets.length; i++) {
-            for(int j = 0; j < targets[i].length(); j++) {
-                if(!map.containsKey(targets[i].charAt(j))) {
+            String target = targets[i];
+            for(int j = 0; j < target.length(); j++) {
+                char ch = target.charAt(j);
+                if(!map.containsKey(ch)) {
                     answer[i] = -1;
                     break;
                 }
-                answer[i] += map.get(targets[i].charAt(j));
+                answer[i] += map.get(ch);
             }
         }
         
