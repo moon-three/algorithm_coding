@@ -1,23 +1,26 @@
 class Solution {
     public String solution(String s) {
+
+        s = s.toLowerCase();
+        
+        char[] chs = s.toCharArray();
         boolean isFirst = true;
         
-        s = s.toLowerCase();
-        char[] chs = s.toCharArray();
-        
-        StringBuilder sb = new StringBuilder();
-        for(char ch : chs) {
-            if(ch == ' ') {
-                isFirst = true;
-            } else {
-                if(isFirst && 'a' <= ch && ch <= 'z') {
-                    ch = (char)(ch - 32);
+        for(int i = 0; i < chs.length; i++) {
+            char ch = chs[i];
+  
+            if(isFirst) {
+                if('a' <= ch && ch <= 'z') {
+                    chs[i] = (char) (ch - 32);
                 }
                 isFirst = false;
             }
-            sb.append(ch);
+            
+            if(ch == ' ') {
+                isFirst = true;
+            }
         }
         
-        return sb.toString();
+        return new String(chs);
     }
 }
