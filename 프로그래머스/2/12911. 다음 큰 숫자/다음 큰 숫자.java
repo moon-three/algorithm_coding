@@ -1,28 +1,23 @@
 class Solution {
     public int solution(int n) {
-        int answer = 0;
-        int cnt = 0;
-        String binaryN = Integer.toBinaryString(n);
-        for(char ch : binaryN.toCharArray()) {
-            if(ch == '1') {
-                cnt++;
-            } 
+
+        String nBinary = Integer.toBinaryString(n);
+        int nCnt = 0;
+        
+        for(int i = 0; i < nBinary.length(); i++) {
+            if(nBinary.charAt(i) == '1') nCnt++;
         }
-        int cur = n+1;
+        
         while(true) {
-            int curCnt = 0;
-            String curBinary = Integer.toBinaryString(cur);
-            for(char ch : curBinary.toCharArray()) {
-                if(ch == '1') {
-                    curCnt++;
-                } 
+            String next = Integer.toBinaryString(++n);
+            int cnt = 0;
+            
+            for(int i = 0; i < next.length(); i++) {
+                if(next.charAt(i) == '1') cnt++;
             }
-            if(cur > n && cnt == curCnt) {
-                answer = cur;
-                break;
-            }
-            cur++;
+            
+            if(cnt == nCnt) return n;
         }
-        return answer;
+
     }
 }
