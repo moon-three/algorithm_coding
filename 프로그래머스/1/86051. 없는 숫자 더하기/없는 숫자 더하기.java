@@ -1,18 +1,18 @@
 class Solution {
     public int solution(int[] numbers) {
-        int answer = -1;
+        int answer = 0;
         
-        int sum = 0;
-        for(int i = 0; i <= 9; i++) {
-            sum += i;
+        int[] nums = new int[10];
+        
+        for(int n : numbers) {
+            nums[n]++;
         }
-        
-        int value = 0;
-        for(int i = 0; i < numbers.length; i++) {
-            value += numbers[i];
+
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] == 0) {
+                answer += i;
+            }
         }
-        
-        answer = sum - value;
         
         return answer;
     }
