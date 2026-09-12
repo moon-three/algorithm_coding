@@ -1,13 +1,10 @@
 class Solution {
     public int[] solution(long n) {
-        int[] answer = {};
+        int[] answer = new int[String.valueOf(n).length()];
         
-        String nToStr = String.valueOf(n);
-        int length = nToStr.length();
-        
-        answer = new int[length];
-        for(int i = 0; i < length; i++) {
-            answer[i] = nToStr.charAt(length - i - 1) - '0';
+        for(int i = 0; i < answer.length; i++) {
+            answer[i] = (int) (n % 10);
+            n /= 10;
         }
         
         return answer;
