@@ -1,13 +1,13 @@
 class Solution {
     public boolean solution(int x) {
-        double sum = 0;
-        int num = x;
+        int origin = x;
+        int sum = 0;
         
-        while(num > 0) {
-            sum += num % 10;
-            num /= 10;
+        while(x > 0) {
+            sum += x % 10;
+            x /= 10;
         }
-   
-        return x % sum == 0 ? true : false;
+        
+        return origin % sum == 0? true : false;
     }
 }
