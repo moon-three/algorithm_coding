@@ -1,10 +1,9 @@
 class Solution {
-    public long solution(long n) {
-        long answer = -1;
+    public long solution(long n) {        
+        double x = Math.pow(n, 0.5);
         
-        double d = Math.sqrt(n);
-        if(d == (long)d) answer = (long)((d+1)*(d+1));
-        
-        return answer;
+        if(x == (int) x) return (long) Math.pow(x+1, 2);
+
+        return -1;
     }
 }
