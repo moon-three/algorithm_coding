@@ -1,19 +1,15 @@
 class Solution {
     public int solution(int num) {
-        long n = num;
         int cnt = 0;
+        long n = num;
         
-        while(n != 1) {
-            if(n % 2 == 0) {
-                n /= 2;
-            } else {
-                n = n * 3 + 1;
-            }
-            cnt++;
+        while(n != 1 && cnt < 500) {
+            if(n % 2 == 0) n /= 2;
+            else n = n * 3 + 1;
             
-            if(cnt > 500) return -1;
+            cnt++;
         }
         
-        return cnt;
+        return cnt == 500 ? -1 : cnt;
     }
 }
