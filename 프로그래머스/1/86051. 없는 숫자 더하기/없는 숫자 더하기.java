@@ -1,19 +1,15 @@
 class Solution {
-    public int solution(int[] numbers) {
-        int answer = 0;
-        
-        int[] nums = new int[10];
-        
-        for(int n : numbers) {
-            nums[n]++;
-        }
-
-        for(int i = 0; i < nums.length; i++) {
-            if(nums[i] == 0) {
-                answer += i;
-            }
+    public int solution(int[] numbers) {   
+        int total = 0;
+        for(int i = 1; i < 10; i++) {
+            total += i;
         }
         
-        return answer;
+        int value = 0;
+        for(int i = 0; i < numbers.length; i++) {
+            value += numbers[i];
+        }
+        
+        return total - value;
     }
 }
