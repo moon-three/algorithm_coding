@@ -1,19 +1,13 @@
 class Solution {
     public int solution(String t, String p) {
         int answer = 0;
+        int length = p.length();
         
-        int left = 0;
-        int right = p.length();
-        
-        while(right <= t.length()) {
-            String cur = t.substring(left, right);
-            
+        for(int i = 0; i <= t.length() - length; i++) {
+            String cur = t.substring(i, i + length);
             if(Long.parseLong(cur) <= Long.parseLong(p)) {
                 answer++;
             }
-            
-            left++;
-            right++;
         }
         
         return answer;
