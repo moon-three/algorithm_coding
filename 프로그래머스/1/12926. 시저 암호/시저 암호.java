@@ -1,19 +1,23 @@
 class Solution {
     public String solution(String s, int n) {
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
         
         for(int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            char pushed = 0;
-            if(ch == ' ') pushed += ' ';
-            else if('a' <= ch && ch <= 'z') {
-                pushed = (ch + n) > 'z' ? (char)(ch + n - 26):(char)(ch+n);   
-            } else if('A' <= ch && ch <= 'Z') {
-                pushed = (ch + n) > 'Z' ? (char)(ch + n - 26):(char)(ch+n);
+            if(ch == ' ') {
+                sb.append(ch);
+                continue;
             }
-            answer += pushed;
+            char next = (char)(ch + n);
+            if(('a' <= ch && ch <= 'z') && 'z' < next) {
+                next -= 26;
+            } 
+            if(('A' <= ch && ch <= 'Z') && 'Z' < next) {
+                next -= 26;
+            }
+            sb.append(next);
         }
-        
-        return answer;
+
+        return sb.toString();
     }
 }
