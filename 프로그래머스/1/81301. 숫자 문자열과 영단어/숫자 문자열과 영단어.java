@@ -1,37 +1,38 @@
-import java.util.HashMap;
+import java.util.*;
 
 class Solution {
     public int solution(String s) {
-        HashMap<String, Integer> hm = new HashMap<>();
-        hm.put("zero", 0);
-        hm.put("one", 1);
-        hm.put("two", 2);
-        hm.put("three", 3);
-        hm.put("four", 4);
-        hm.put("five", 5);
-        hm.put("six", 6);
-        hm.put("seven", 7);
-        hm.put("eight", 8);
-        hm.put("nine", 9);
-
-        StringBuilder result = new StringBuilder();
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < s.length(); i++) {
+        
+        Map<String, Integer> map = getMap();
+        String result = "";
+        String word = "";
+        
+        for(int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-
-            if (Character.isDigit(ch)) {
-                result.append(ch);
-            } else {
-                sb.append(ch);
-                String word = sb.toString();
-                if (hm.containsKey(word)) {
-                    result.append(hm.get(word));
-                    sb = new StringBuilder();
+            if('0' <= ch && ch <= '9') result += ch;
+            else {
+                word += ch;
+                if(map.containsKey(word)) {
+                    result += map.get(word);
+                    word = "";
                 }
             }
         }
-
-        return Integer.parseInt(result.toString());
+        
+        return Integer.parseInt(result);
+    }
+    
+    public Map<String, Integer> getMap() {
+        return Map.of(
+        "one", 1,
+        "two", 2,
+        "three", 3,
+        "four", 4,
+        "five", 5,
+        "six", 6,
+        "seven", 7,
+        "eight", 8,
+        "nine", 9,
+        "zero", 0);
     }
 }
