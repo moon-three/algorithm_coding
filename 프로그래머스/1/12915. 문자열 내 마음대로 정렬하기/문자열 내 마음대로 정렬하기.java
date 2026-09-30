@@ -17,6 +17,7 @@ class Solution {
     }
     
     public String[] solution(String[] strings, int n) {
+        
         String[] answer = new String[strings.length];
         Letter[] letters = new Letter[strings.length];
         
