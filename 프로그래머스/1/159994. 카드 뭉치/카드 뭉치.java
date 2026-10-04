@@ -1,22 +1,24 @@
+import java.util.*;
+
 class Solution {
     public String solution(String[] cards1, String[] cards2, String[] goal) {
-        String answer = "";
+        Queue<String> q1 = new ArrayDeque<>();
+        Queue<String> q2 = new ArrayDeque<>();
         
-        int idx1 = 0;
-        int idx2 = 0;
-        boolean isPossible = true;
-        
-        for(int i = 0; i < goal.length; i++) {
-            if(idx1 < cards1.length && goal[i].equals(cards1[idx1])) {
-                idx1++;
-            } else if(idx2 < cards2.length && goal[i].equals(cards2[idx2])) {
-                idx2++;
-            } else {
-                isPossible = false;
-                break;
-            }
+        for(int i = 0; i < cards1.length; i++) {
+            q1.add(cards1[i]);
         }
         
-        return isPossible ? "Yes" : "No";
+        for(int i = 0; i < cards2.length; i++) {
+            q2.add(cards2[i]);
+        }
+        
+        for(int i = 0; i < goal.length; i++) {
+            if(!q1.isEmpty() && q1.peek().equals(goal[i])) q1.poll();
+            else if(!q2.isEmpty() && q2.peek().equals(goal[i])) q2.poll();
+            else return "No";
+        }
+        
+        return "Yes";
     }
 }
